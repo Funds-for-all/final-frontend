@@ -11,6 +11,8 @@ import { useWallet } from "@/hooks/use-wallet"
 import { usePools } from "@/hooks/use-pools"
 import { FACTORY_CONTRACT_ADDRESS } from "@/lib/contracts"
 import { FloatingIframe } from "@/components/floating-iframe"
+import { IframeOnDisconnect } from "@/components/iframe-on-disconnect"
+import { IframePopupButton } from "@/components/iframe-popup-button"
 import { ethers } from "ethers"
 
 export default function HomePage() {
@@ -27,13 +29,16 @@ export default function HomePage() {
   if (!isConnected) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+        <IframePopupButton />
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
               <Wallet className="w-6 h-6 text-blue-600" />
             </div>
-            <CardTitle className="text-2xl">Fund Pool DApp</CardTitle>
+            <CardTitle className="text-2xl">Funds-for-all</CardTitle>
             <CardDescription>Connect your wallet to create and participate in fund pools</CardDescription>
+            {/* <IframePopupButton /> */}
+            {/* <IframeOnDisconnect /> */}
           </CardHeader>
           <CardContent>
             <WalletConnection onConnect={connectWallet} />
@@ -49,7 +54,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Fund Pool DApp</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Funds-for-all</h1>
               <div className="flex items-center gap-4 text-sm text-gray-600">
                 <span>
                   Connected: {account?.slice(0, 6)}...{account?.slice(-4)}
