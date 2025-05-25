@@ -10,6 +10,7 @@ import { PoolCard } from "@/components/pool-card"
 import { useWallet } from "@/hooks/use-wallet"
 import { usePools } from "@/hooks/use-pools"
 import { FACTORY_CONTRACT_ADDRESS } from "@/lib/contracts"
+import { FloatingIframe } from "@/components/floating-iframe"
 import { ethers } from "ethers"
 
 export default function HomePage() {
@@ -19,7 +20,9 @@ export default function HomePage() {
 
   // Check if contract address is configured and valid
   const isContractConfigured =
-    FACTORY_CONTRACT_ADDRESS && FACTORY_CONTRACT_ADDRESS !== "0x..." && ethers.isAddress(FACTORY_CONTRACT_ADDRESS)
+    typeof FACTORY_CONTRACT_ADDRESS === "string" &&
+    FACTORY_CONTRACT_ADDRESS !== ("0x7aA03fd7Eb166417A4f31B103843036a3a805713" as string) &&
+    ethers.isAddress(FACTORY_CONTRACT_ADDRESS)
 
   if (!isConnected) {
     return (
@@ -70,7 +73,7 @@ export default function HomePage() {
                 ⚠️ Contract address not configured or invalid. Please update FACTORY_CONTRACT_ADDRESS in lib/contracts.ts
                 with a valid contract address.
               </p>
-              {FACTORY_CONTRACT_ADDRESS && FACTORY_CONTRACT_ADDRESS !== "0x..." && (
+              {FACTORY_CONTRACT_ADDRESS && FACTORY_CONTRACT_ADDRESS !== ("0x7aA03fd7Eb166417A4f31B103843036a3a805713" as string) && (
                 <p className="text-xs text-yellow-700 mt-1">Current address: {FACTORY_CONTRACT_ADDRESS}</p>
               )}
             </div>
@@ -187,6 +190,7 @@ export default function HomePage() {
       </main>
 
       <CreatePoolDialog open={showCreateDialog} onOpenChange={setShowCreateDialog} onSuccess={refreshPools} />
+      <FloatingIframe url="https://eskandaratrakchi.github.io/Market-Live-Prices-Team-Project/Chat.html" buttonLabel="Public-Chat" />
     </div>
   )
 }

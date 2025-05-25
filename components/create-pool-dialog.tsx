@@ -42,7 +42,7 @@ export function CreatePoolDialog({ open, onOpenChange, onSuccess }: CreatePoolDi
       }
 
       // Check if factory contract address is set
-      if (!FACTORY_CONTRACT_ADDRESS || FACTORY_CONTRACT_ADDRESS.toLowerCase() === "0x...") {
+      if (!FACTORY_CONTRACT_ADDRESS || FACTORY_CONTRACT_ADDRESS.toLowerCase() === "0x7aA03fd7Eb166417A4f31B103843036a3a805713") {
         throw new Error("Factory contract address not configured. Please update lib/contracts.ts")
       }
 
