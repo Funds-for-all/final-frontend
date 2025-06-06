@@ -195,7 +195,7 @@ export default function HomePage() {
       </main>
 
       <CreatePoolDialog open={showCreateDialog} onOpenChange={setShowCreateDialog} onSuccess={refreshPools} />
-      <FloatingIframe url="https://eskandaratrakchi.github.io/Market-Live-Prices-Team-Project/Chat.html" buttonLabel="Public-Chat" />
+      <FloatingIframe url="https://real-time-chat-weld.vercel.app/" buttonLabel="Public-Chat" />
     </div>
   )
 }
